@@ -18,7 +18,7 @@ This is a python project, so use pip to install the necessary libraries:
 
 `python tracker.py`
 
-The script will run and launch a browser session, loading the website page, then waiting a few seconds before saving data and quitting the session.
+The script will run and launch a browser session, loading the forums page of D&D Beyond, then waiting a few seconds before saving data and quitting the session.
 
 It then waits between 58 and 62 minutes before repeating.
 
@@ -47,4 +47,4 @@ Note that 2 should equal 3 + 4
 - Use `python --version` to check your version. Written using:
   - python 3.13.0
   - pip 24.3.1
-  - playwright 1.48.0
+- 
