@@ -1,12 +1,12 @@
 # DDB Usage Tracker
 
-![GitHub last commit](https://img.shields.io/github/last-commit/FaithLilley/DDB-usage-monitor?style=plastic&logo=github) ![GitHub repo size](https://img.shields.io/github/repo-size/FaithLilley/DDB-usage-monitor?style=plastic) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/playwright?style=plastic) ![Static Badge](https://img.shields.io/badge/Web%20Data%20Scraper?style=plastic&label=tool)
+![GitHub last commit](https://img.shields.io/github/last-commit/FaithLilley/DDB-usage-monitor?style=plastic&logo=github) ![GitHub repo size](https://img.shields.io/github/repo-size/FaithLilley/DDB-usage-monitor?style=plastic) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/playwright?style=plastic)
 
 
 
-A python script to track the number of active users on D&D Beyond.
+A python script to monitor and profile the number of active users on a website on an hourly basis.
 
-It loads up the [D&D Beyond forums page](https://www.dndbeyond.com/forums), extracts data on the current number of users, and saves it to a CSV
+It loads up the URL, extracts the data required and saves it to a CSV
 
 ## Installation
 
