@@ -1,5 +1,9 @@
 # DDB Usage Tracker
 
+![GitHub last commit](https://img.shields.io/github/last-commit/FaithLilley/DDB-usage-monitor?style=plastic&logo=github) ![GitHub repo size](https://img.shields.io/github/repo-size/FaithLilley/DDB-usage-monitor?style=plastic) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/playwright?style=plastic) ![Static Badge](https://img.shields.io/badge/Web%20Data%20Scraper?style=plastic&label=tool)
+
+
+
 A python script to track the number of active users on D&D Beyond.
 
 It loads up the [D&D Beyond forums page](https://www.dndbeyond.com/forums), extracts data on the current number of users, and saves it to a CSV
@@ -14,12 +18,16 @@ This is a python project, so use pip to install the necessary libraries:
 
 `python tracker.py`
 
-The script will run and launch a browser session, loading the forums page of D&D Beyond, then waiting a few seconds before saving data and quitting.
+The script will run and launch a browser session, loading the forums page of D&D Beyond, then waiting a few seconds before saving data and quitting the session.
+
+It then waits between 58 and 62 minutes before repeating.
 
 1. It saves a copy of that page, in html format, to `./pages/`
 2. It saves a line of data to `./data/dnd_usage.csv`
 
 ### Format of the CSV file
+
+`2024-11-14 00:00:08,13689,3341,10348`
 
 There are 4 fields of data on each line:
 
@@ -30,9 +38,9 @@ There are 4 fields of data on each line:
 
 Note that 2 should equal 3 + 4
 
-*A sample line of data*
+## TO DO
 
-`2024-11-14 00:00:08,13689,3341,10348`
+- Update the delay so that the read time stays within +/- 2 mins of the hour mark.
 
 ## Misc notes
 
