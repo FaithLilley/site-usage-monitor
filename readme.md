@@ -1,4 +1,4 @@
-# DDB Usage Tracker
+# Site Usage Tracker
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/FaithLilley/DDB-usage-monitor?style=plastic&logo=github) ![GitHub repo size](https://img.shields.io/github/repo-size/FaithLilley/DDB-usage-monitor?style=plastic) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/playwright?style=plastic)
 
