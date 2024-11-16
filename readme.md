@@ -16,9 +16,9 @@ This is a python project, so use pip to install the necessary libraries:
 
 `python tracker.py`
 
-The script will run and launch a browser session, loading the forums page of D&D Beyond, then waiting a few seconds before saving data and quitting the session.
+The script will attempt to scrape data once per hour, running between the hour and 5 minutes past the hour. It will launch a browser session, loading the forums page of D&D Beyond, then waiting a few seconds before saving data and quitting the session.
 
-It then waits between 58 and 62 minutes before repeating.
+It then repeats every hour at a random point between on the hour and 5 minutes past.
 
 1. It saves a copy of that page, in html format, to `./pages/`
 2. It saves a line of data to `./data/dnd_usage.csv`
@@ -35,10 +35,6 @@ There are 4 fields of data on each line:
 4. Currently active logged out users
 
 Note that 2 should equal 3 + 4
-
-## TO DO
-
-- Update the delay so that the read time stays within +/- 2 mins of the hour mark.
 
 ## Misc notes
 

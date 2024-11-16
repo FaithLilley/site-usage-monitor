@@ -67,14 +67,46 @@ def save_data(data):
         writer = csv.writer(file)
         writer.writerow(data)
 
+def wait_until_start():
+    """
+    Wait until the correct start time (between the hour and 5 minutes past).
+    """
+    now = datetime.datetime.now()
+    # Calculate the next hour
+    next_hour = now.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(hours=1)
+    # Determine the current valid window
+    valid_start = now.replace(minute=0, second=0, microsecond=0)
+    valid_end = valid_start + datetime.timedelta(minutes=5)
+    
+    if valid_start <= now <= valid_end:
+        # Already within the valid time range, start immediately
+        print(f"Current time {now.strftime('%Y-%m-%d %H:%M:%S')} is within the valid window.")
+        return
+    else:
+        # Not within the range, calculate time to wait
+        if now < valid_start:
+            next_activation = valid_start  # This hour's window
+        else:
+            next_activation = next_hour  # Next hour's window starts
+        
+        random_offset = random.randint(0, 300)  # Random offset in seconds (0 to 5 minutes)
+        next_activation += datetime.timedelta(seconds=random_offset)
+        
+        wait_time = (next_activation - now).total_seconds()
+        print(f"Next activation scheduled for: {next_activation.strftime('%Y-%m-%d %H:%M:%S')} "
+              f"(waiting {int(wait_time // 60)} minutes and {int(wait_time % 60)} seconds)")
+        
+        time.sleep(wait_time)
+
 if __name__ == "__main__":
+    # Ensure the script starts at the correct time
+    wait_until_start()
+    
     while True:
         data = fetch_data()
         if data:
             save_data(data)
             print("Data saved:", data)
-
-        # Calculate randomized delay (1 hour ± a few minutes)
-        delay = 3600 + random.randint(-120, 120)  # 1 hour ± 2 minutes
-        print(f"Waiting for {delay // 60} minutes and {delay % 60} seconds...")
-        time.sleep(delay)
+        
+        # Wait until the next activation cycle
+        wait_until_start()
