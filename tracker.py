@@ -73,40 +73,23 @@ def wait_until_start():
     """
     now = datetime.datetime.now()
     # Calculate the next hour
-    next_hour = now.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(hours=1)
-    # Determine the current valid window
-    valid_start = now.replace(minute=0, second=0, microsecond=0)
-    valid_end = valid_start + datetime.timedelta(minutes=5)
+    next_activation = now.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(hours=1)
+
+    random_offset = random.randint(0, 300)  # Random offset in seconds (0 to 5 minutes)
+    next_activation += datetime.timedelta(seconds=random_offset)
+
+    wait_time = (next_activation - now).total_seconds()
+    print(f"Next activation scheduled for: {next_activation.strftime('%Y-%m-%d %H:%M:%S')} "
+            f"(waiting {int(wait_time // 60)} minutes and {int(wait_time % 60)} seconds)")
     
-    if valid_start <= now <= valid_end:
-        # Already within the valid time range, start immediately
-        print(f"Current time {now.strftime('%Y-%m-%d %H:%M:%S')} is within the valid window.")
-        return
-    else:
-        # Not within the range, calculate time to wait
-        if now < valid_start:
-            next_activation = valid_start  # This hour's window
-        else:
-            next_activation = next_hour  # Next hour's window starts
-        
-        random_offset = random.randint(0, 300)  # Random offset in seconds (0 to 5 minutes)
-        next_activation += datetime.timedelta(seconds=random_offset)
-        
-        wait_time = (next_activation - now).total_seconds()
-        print(f"Next activation scheduled for: {next_activation.strftime('%Y-%m-%d %H:%M:%S')} "
-              f"(waiting {int(wait_time // 60)} minutes and {int(wait_time % 60)} seconds)")
-        
-        time.sleep(wait_time)
+    time.sleep(wait_time)
 
 if __name__ == "__main__":
-    # Ensure the script starts at the correct time
-    wait_until_start()
     
     while True:
+        # Ensure the script starts at the correct time
+        wait_until_start()
         data = fetch_data()
         if data:
             save_data(data)
             print("Data saved:", data)
-        
-        # Wait until the next activation cycle
-        wait_until_start()
