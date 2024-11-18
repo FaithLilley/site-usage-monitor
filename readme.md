@@ -16,7 +16,7 @@ This is a python project, so use pip to install the necessary libraries:
 
 `python tracker.py`
 
-The script will attempt to scrape data once per hour, running between the hour and 5 minutes past the hour. It will launch a browser session, loading the forums page of D&D Beyond, then waiting a few seconds before saving data and quitting the session.
+The script will attempt to scrape data once per hour, running between the hour and 5 minutes past the hour. It will launch a browser session, load a page, then waiting a few seconds before saving data and quitting the session.
 
 It then repeats every hour at a random point between on the hour and 5 minutes past.
 
